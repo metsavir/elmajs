@@ -247,8 +247,8 @@ export default class Replay {
     }, 0);
     const maxFrameTime = maxFrames * 33.333;
 
-    // If no touch event, return approximate frame time.
-    if ((lastEvent && lastEvent.type !== EventType.Touch) || !lastEvent) {
+    // If no touch or apple event, return approximate frame time.
+    if ((lastEvent && lastEvent.type !== EventType.Touch && lastEvent.type !== EventType.Apple) || !lastEvent) {
       return {
         finished: false,
         reason: ReplayFinishStateReason.NoTouch,

@@ -146,6 +146,17 @@ describe('Replay', () => {
     });
   });
 
+  test('getTime, finished, single, apple last event', async () => {
+    const filePath = '__tests__/assets/replays/finished_apple_last_event.rec';
+    const file = await readFile(filePath);
+    const rec = Replay.from(file);
+    expect(rec.getTime()).toEqual({
+      finished: true,
+      reason: ReplayFinishStateReason.Touch,
+      time: 3891,
+    });
+  });
+
   test('getTime, unfinished, no event', async () => {
     const filePath = '__tests__/assets/replays/unfinished.rec';
     const file = await readFile(filePath);
@@ -174,7 +185,7 @@ describe('Replay', () => {
     const rec = Replay.from(file);
     expect(rec.getTime()).toEqual({
       finished: false,
-      reason: ReplayFinishStateReason.NoTouch,
+      reason: ReplayFinishStateReason.FrameDifference,
       time: 1600,
     });
   });
@@ -196,7 +207,7 @@ describe('Replay', () => {
     const rec = Replay.from(file);
     expect(rec.getTime()).toEqual({
       finished: false,
-      reason: ReplayFinishStateReason.NoTouch,
+      reason: ReplayFinishStateReason.FrameDifference,
       time: 8567,
     });
   });
