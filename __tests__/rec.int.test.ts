@@ -227,6 +227,8 @@ describe('Replay', () => {
     ['rec_valid_2.rec', 4],
     ['rec_valid_3.rec', 4],
     ['appbug.rec', 19],
+    ['lc408one.rec', 1],
+    ['lc408finish.rec', 5],
   ])('.apples counts correct number of apples: %s', async (fileName, apples) => {
     const filePath = `__tests__/assets/replays/${fileName}`;
     const file = await readFile(filePath);
@@ -239,6 +241,8 @@ describe('Replay', () => {
     ['rec_valid_2.rec', 4],
     ['rec_valid_3.rec', 4],
     ['appbug.rec', 36],
+    ['lc408one.rec', 1],
+    ['lc408finish.rec', 5],
   ])('.totalApples counts correct number of apples: %s', async (fileName, apples) => {
     const filePath = `__tests__/assets/replays/${fileName}`;
     const file = await readFile(filePath);
